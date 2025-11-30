@@ -394,3 +394,8 @@ footer {
         padding: 8px 12px;
     }
 }
+
+/* Fix fade-in observer not triggering for large tables */
+#curation {
+  overflow: visible !important;
+}
