@@ -1,0 +1,312 @@
+/* Airbnb-inspired Variables */
+:root {
+    --primary: #FF385C; /* Airbnb Coral */
+    --text-dark: #222222; /* Charcoal */
+    --text-gray: #717171; /* Secondary Text */
+    --bg-light: #F7F7F7; /* Light Gray Background */
+    --white: #FFFFFF;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+    --shadow-hover: 0 6px 16px rgba(0,0,0,0.12);
+    --radius: 16px; /* Distinct rounded corners */
+}
+
+/* Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 800px; /* Reading width */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+    color: var(--text-gray);
+    text-decoration: underline;
+}
+
+/* Layout */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: var(--white);
+    padding: 60px 0 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #EBEBEB;
+}
+
+.badge {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Cards (Airbnb Style) */
+.card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 30px;
+    border: 1px solid #DDDDDD;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.highlight-card {
+    border-left: 5px solid var(--primary);
+}
+
+/* Contributors Grid */
+.contribution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.member p {
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.member small {
+    color: var(--text-gray);
+    line-height: 1.4;
+    display: block;
+}
+
+/* Code Blocks */
+.code-container {
+    background: #1e1e1e; /* Dark IDE Theme */
+    border-radius: 12px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.code-header {
+    background: #2d2d2d;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.code-header span {
+    color: #aaa;
+    font-size: 0.8rem;
+    font-family: monospace;
+    margin-left: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 0 !important;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+pre {
+    padding: 15px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Fira Code', monospace;
+    color: #d4d4d4;
+    font-size: 0.9rem;
+}
+
+/* Plot Containers */
+.plot-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.placeholder-image {
+    background-color: #f0f0f0;
+    color: #999;
+    height: 300px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ddd;
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    font-style: italic;
+}
+
+/* Fade In Animation Class */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .nav-links {
+        display: none; /* Simple hide for mobile, or add a hamburger menu */
+    }
+    
+    h1 { font-size: 1.8rem; }
+    
+    .card { padding: 20px; }
+}
+
+/* Styling for the new logo image */
+
+.logo {
+    /* Use flexbox to align the icon and text horizontally */
+    display: flex; 
+    align-items: center; /* Vertically center the text and image */
+    gap: 8px; /* Add some space between the image and the text */
+}
+
+.nav-icon {
+    /* Set a small, appropriate size for the navbar icon */
+    height: 24px; 
+    width: 24px;
+    /* Ensure the icon is slightly rounded to match the aesthetic */
+    border-radius: 4px; 
+}
+
+/* GitHub Button Styling */
+
+.github-button-container {
+    margin-bottom: 25px; /* Space above contributions card */
+    text-align: center; /* Center the button in the hero section */
+}
+
+.airbnb-button {
+    /* Base style */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--primary); /* Airbnb Coral */
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 8px; /* Slightly less rounded than the main cards */
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.airbnb-button:hover {
+    /* Hover effect: darken and lift slightly */
+    background-color: #E03050; /* A slightly darker coral */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}

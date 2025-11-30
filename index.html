@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMSC 320 Final Tutorial</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="assests\images\larger_favicon_CMSC320.png" type="image/png">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assests\images\larger_favicon_CMSC320.png" alt="Project Logo" class="nav-icon">
+                CMSC320 Final Project Project
+            </a>
+            <ul class="nav-links">
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#curation">Data</a></li>
+                <li><a href="#eda">EDA</a></li>
+                <li><a href="#ml">Machine Learning</a></li>
+                <li><a href="#conclusion">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Fall 2025 • CMSC 320</span>
+            <h1>Airbnb by the Numbers: Trends, Predictions, and Insights </h1>
+            <p class="subtitle">A tutorial walking through our journey mapping geographic trends in the short-term rental market.</p>
+            
+            <div class="github-button-container">
+            <a href="https://github.com/BigMasterC/CMSC320_Final_Project" class="airbnb-button">
+                <i class="fa-brands fa-github fa-lg"></i>
+                View Code on GitHub
+            </a>
+            </div>
+            <div class="card contributors">
+                <h3>👥 Team Contributions</h3>
+                <div class="contribution-grid">
+                    <div class="member">
+                        <strong>Chibundu Onwuegbule</strong>
+                        <p>Sections: A, G</p>
+                        <small>[Placeholder for tasks completed for this project]</small>
+                    </div>
+                    <div class="member">
+                        <strong>Aditya Chattopadhyay</strong>
+                        <p>Section: B</p>
+                        <small>[Placeholder for tasks completed for this project]</small>
+                    </div>
+                    <div class="member">
+                        <strong>Thomas Huitema</strong>
+                        <p>Section: C</p>
+                        <small>[Placeholder for tasks completed for this project]</small>
+                    </div>
+                    <div class="member">
+                        <strong>Arnav Doshi</strong>
+                        <p>Sections: C</p>
+                        <small>[Placeholder for tasks completed for this project]</small>
+                    </div>
+                    <div class="member">
+                        <strong>Zhiteng Ke</strong>
+                        <p>Sections: D, E, F</p>
+                        <small>[Placeholder for tasks completed for this project]</small>
+                    </div>
+                    <div class="member">
+                        <strong>Alex Mohamed</strong>
+                        <p>Sections: D, E, F</p>
+                        <small>[Placeholder for tasks completed for this project]</small>
+                    </div>
+                </div>
+
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="intro" class="fade-in">
+            <h2>Introduction</h2>
+            <div class="card">
+                <p>
+                    <!-- What is your topic? What questions are you trying to answer? Why does this matter?
+                    For example, "We are analyzing X to predict Y because Z." -->
+                    [Placeholder for a proper introduction to the project topic and its significance.]
+                </p>
+            </div>
+        </section>
+
+        <section id="curation" class="fade-in">
+            <h2>Data Curation</h2>
+            <div class="card">
+                <h3>Source & Parsing</h3>
+                <p>
+                    [Placeholder for data source description and how the data was parsed, cleaned, and engineered]
+                    <!-- We obtained our dataset from [Source Name]. The raw data was in JSON format... -->
+                </p>
+                
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span>data_processing.py</span>
+                    </div>
+                    <pre><code>
+import pandas as pd
+import numpy as np
+
+# Load the dataset
+df = pd.read_csv('data/raw_data.csv')
+
+# Drop missing values
+df = df.dropna(subset=['target_variable'])
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="eda" class="fade-in">
+            <h2>Exploratory Data Analysis</h2>
+            <div class="card">
+                <h3>Summary Statistics</h3>
+                <p>
+                    The dataset contains X entries and Y features. We observed a strong correlation between...
+                </p>
+                
+                <div class="plot-container">
+                    <div class="placeholder-image">
+                        [Insert Distribution Plot Here]
+                    </div>
+                    <p class="caption">Figure 1: Distribution of the primary variable showing outliers.</p>
+                </div>
+
+                <h3>Hypothesis Testing</h3>
+                <p>
+                    We performed a T-test to determine if the difference in means was significant...
+                </p>
+            </div>
+        </section>
+
+        <section id="ml" class="fade-in">
+            <h2>Primary Analysis (Machine Learning)</h2>
+            <div class="card">
+                <h3>Technique Selection</h3>
+                <p>
+                    We chose Random Forest Regression because our data is non-linear and high-dimensional...
+                </p>
+                
+                <h3>Training & Testing</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span>model_training.py</span>
+                    </div>
+                    <pre><code>
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+model = RandomForestRegressor(n_estimators=100)
+model.fit(X_train, y_train)
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="viz" class="fade-in">
+            <h2>Visualization of Results</h2>
+            <div class="card">
+                <p>
+                    The model achieved an accuracy of 85%. The plot below visualizes the predicted vs actual values.
+                </p>
+                <div class="plot-container">
+                    <div class="placeholder-image">
+                        [Insert Confusion Matrix or Regression Plot Here]
+                    </div>
+                    <p class="caption">Figure 2: Model performance on the test set.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="fade-in">
+            <h2>Insights & Conclusion</h2>
+            <div class="card highlight-card">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Insight 1: The data suggests that...</li>
+                    <li>Insight 2: Our model proves that...</li>
+                    <li>Insight 3: Future work could include...</li>
+                </ul>
+                <p>
+                    Does the reader feel informed? [cite: 72]
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CMSC 320 Group Project. Built with data and coffee.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
