@@ -310,3 +310,87 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
+
+.fa-brands, .fa-lg {
+    font-size: inherit;
+}
+
+/* Data Table Styling */
+.data-table-container {
+    overflow-x: auto;
+    margin: 30px 0;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: 0.95rem;
+}
+
+.data-table thead {
+    background: var(--bg-light);
+    border-bottom: 2px solid #DDDDDD;
+}
+
+.data-table-header {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--text-dark);
+    border-bottom: 1px solid #EBEBEB;
+}
+
+.data-table-datatype {
+    padding: 8px 16px;
+    text-align: left;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-style: italic;
+    background: #FAFAFA;
+    border-bottom: 2px solid #DDDDDD;
+}
+
+.data-table tbody tr {
+    border-bottom: 1px solid #F0F0F0;
+    transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background-color: #F9F9F9;
+}
+
+.data-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.data-table-cell {
+    padding: 12px 16px;
+    color: var(--text-dark);
+}
+
+.data-table-footer {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-style: italic;
+    background: var(--bg-light);
+    border-top: 2px solid #DDDDDD;
+}
+
+/* Responsive table */
+@media (max-width: 600px) {
+    .data-table {
+        font-size: 0.85rem;
+    }
+    
+    .data-table-header,
+    .data-table-cell,
+    .data-table-datatype {
+        padding: 8px 12px;
+    }
+}
