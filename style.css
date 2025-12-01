@@ -427,7 +427,7 @@ html, body {
 .complete-dataset-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 900px;
+  /* min-width: 900px; */
   background: var(--white);
 }
 
@@ -497,7 +497,7 @@ html, body {
   padding: 15px;
   border-radius: 8px;
   flex: 1;
-  min-width: 200px;
+  /* min-width: 200px; */
   border: 1px solid #dddddd;
 }
 
