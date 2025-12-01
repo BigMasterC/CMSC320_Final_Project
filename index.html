@@ -17,7 +17,7 @@
     />
     <link
       rel="icon"
-      href="assests\images\larger_favicon_CMSC320.png"
+      href="assests/images/larger_favicon_CMSC320.png"
       type="image/png"
     />
   </head>
@@ -26,11 +26,11 @@
       <div class="nav-container">
         <a href="#" class="logo">
           <img
-            src="assests\images\larger_favicon_CMSC320.png"
+            src="assests/images/larger_favicon_CMSC320.png"
             alt="Project Logo"
             class="nav-icon"
           />
-          CMSC320 Final Project Project
+          CMSC320 Final Project
         </a>
         <ul class="nav-links">
           <li><a href="#intro">Intro</a></li>
@@ -41,6 +41,7 @@
         </ul>
       </div>
     </nav>
+
     <header class="hero">
       <div class="container">
         <span class="badge">Fall 2025 • CMSC 320</span>
@@ -95,18 +96,18 @@
         </div>
       </div>
     </header>
+
     <main class="container">
       <section id="intro" class="fade-in">
         <h2>Introduction</h2>
         <div class="card">
           <p>
-            <!-- What is your topic? What questions are you trying to answer? Why does this matter?
-                     For example, "We are analyzing X to predict Y because Z." -->
             [Placeholder for a proper introduction to the project topic and its
             significance.]
           </p>
         </div>
       </section>
+
       <section id="curation" class="fade-in">
         <h2>Data Curation</h2>
         <div class="card">
@@ -147,6 +148,7 @@
               <p>11,836 countries represented</p>
             </div>
           </div>
+
           <h3>Complete Dataset</h3>
           <div class="code-container">
             <div class="code-header">
@@ -159,6 +161,7 @@
 df = pd.read_csv("airbnb.csv")
 df.head()</code></pre>
           </div>
+          
           <p>Scroll horizontally and vertically to view all columns and rows</p>
           <div class="complete-dataset-container">
             <table class="complete-dataset-table">
@@ -197,21 +200,10 @@ df.head()</code></pre>
                   <td>Mehmetcan</td>
                   <td>357334205</td>
                   <td class="truncated-text">Kartepe, Kocaeli, Turkey</td>
-                  <td class="truncated-text">
-                    2 guests,2 bedrooms,1 bed,1 bathroom
-                  </td>
-                  <td class="truncated-text">
-                    Mountain view,Valley view,Lake access,Kitchen,Wifi,Free
-                    parking on premises,Pets allowed,TV
-                  </td>
-                  <td class="truncated-text">
-                    Airbnb's COVID-19 safety practices apply,No carbon monoxide
-                    alarm,No smoke alarm,Nearby lake, river, other body of water
-                  </td>
-                  <td class="truncated-text">
-                    Check-in: Flexible,Check out: 12:00 pm,Pets are
-                    allowed,Smoking is allowed
-                  </td>
+                  <td class="truncated-text">2 guests,2 bedrooms,1 bed,1 bathroom</td>
+                  <td class="truncated-text">Mountain view,Valley view,Lake access,Kitchen,Wifi,Free parking on premises,Pets allowed,TV</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,No carbon monoxide alarm,No smoke alarm,Nearby lake, river, other body of water</td>
+                  <td class="truncated-text">Check-in: Flexible,Check out: 12:00 pm,Pets are allowed,Smoking is allowed</td>
                   <td class="truncated-text">5 image links</td>
                   <td class="price">8,078</td>
                   <td class="country">Turkey</td>
@@ -226,30 +218,16 @@ df.head()</code></pre>
                 </tr>
                 <tr>
                   <td>50891766</td>
-                  <td>
-                    Authentic Beach Architect Sheltered Villa with Pool and
-                    Jacuzzi
-                  </td>
+                  <td>Authentic Beach Architect Sheltered Villa with Pool and Jacuzzi</td>
                   <td class="rating-new">New</td>
                   <td>0</td>
                   <td>Fatih</td>
                   <td>386223873</td>
                   <td class="truncated-text">Kaş, Antalya, Turkey</td>
-                  <td class="truncated-text">
-                    4 guests,2 bedrooms,2 beds,2 bathrooms
-                  </td>
-                  <td class="truncated-text">
-                    Kitchen,Wifi,Dedicated workspace,Free parking on
-                    premises,Private pool,Private hot tub,TV,Washing machine
-                  </td>
-                  <td class="truncated-text">
-                    Airbnb's COVID-19 safety practices apply,Carbon monoxide
-                    alarm not reported,Smoke alarm not reported
-                  </td>
-                  <td class="truncated-text">
-                    Check-in: 4:00 pm - 11:00 pm,Check out: 10:00 am,No
-                    smoking,No pets,No parties or events
-                  </td>
+                  <td class="truncated-text">4 guests,2 bedrooms,2 beds,2 bathrooms</td>
+                  <td class="truncated-text">Kitchen,Wifi,Dedicated workspace,Free parking on premises,Private pool,Private hot tub,TV,Washing machine</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,Carbon monoxide alarm not reported,Smoke alarm not reported</td>
+                  <td class="truncated-text">Check-in: 4:00 pm - 11:00 pm,Check out: 10:00 am,No smoking,No pets,No parties or events</td>
                   <td class="truncated-text">5 image links</td>
                   <td class="price">4,665</td>
                   <td class="country">Turkey</td>
@@ -270,22 +248,10 @@ df.head()</code></pre>
                   <td>Giorgi</td>
                   <td>409690853</td>
                   <td class="truncated-text">Imereti, Georgia</td>
-                  <td class="truncated-text">
-                    4 guests,1 bedroom,3 beds,1 bathroom
-                  </td>
-                  <td class="truncated-text">
-                    Mountain view,Kitchen,Wifi,Dedicated workspace,Free driveway
-                    parking on premises,Pets allowed,40" HDTV with
-                    cable/satellite TV,Lift
-                  </td>
-                  <td class="truncated-text">
-                    Airbnb's COVID-19 safety practices apply,No carbon monoxide
-                    alarm,No smoke alarm
-                  </td>
-                  <td class="truncated-text">
-                    Check-in: After 1:00 pm,Check out: 12:00 pm,Self check-in
-                    with lockbox,Pets are allowed
-                  </td>
+                  <td class="truncated-text">4 guests,1 bedroom,3 beds,1 bathroom</td>
+                  <td class="truncated-text">Mountain view,Kitchen,Wifi,Dedicated workspace,Free driveway parking on premises,Pets allowed,40" HDTV with cable/satellite TV,Lift</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,No carbon monoxide alarm,No smoke alarm</td>
+                  <td class="truncated-text">Check-in: After 1:00 pm,Check out: 12:00 pm,Self check-in with lockbox,Pets are allowed</td>
                   <td class="truncated-text">5 image links</td>
                   <td class="price">5,991</td>
                   <td class="country">Georgia</td>
@@ -306,23 +272,10 @@ df.head()</code></pre>
                   <td>Melih</td>
                   <td>401873242</td>
                   <td class="truncated-text">Sapanca, Sakarya, Turkey</td>
-                  <td class="truncated-text">
-                    4 guests,1 bedroom,2 beds,1 bathroom
-                  </td>
-                  <td class="truncated-text">
-                    Mountain view,Valley view,Kitchen,Wifi,Free parking on
-                    premises,Private pool,42" HDTV with Netflix,Security cameras
-                    on property
-                  </td>
-                  <td class="truncated-text">
-                    Airbnb's COVID-19 safety practices apply,No carbon monoxide
-                    alarm,No smoke alarm,Security camera/recording device,Nearby
-                    lake, river, other body of water
-                  </td>
-                  <td class="truncated-text">
-                    Check-in: After 2:00 pm,Check out: 12:00 pm,No smoking,No
-                    pets
-                  </td>
+                  <td class="truncated-text">4 guests,1 bedroom,2 beds,1 bathroom</td>
+                  <td class="truncated-text">Mountain view,Valley view,Kitchen,Wifi,Free parking on premises,Private pool,42" HDTV with Netflix,Security cameras on property</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,No carbon monoxide alarm,No smoke alarm,Security camera/recording device,Nearby lake, river, other body of water</td>
+                  <td class="truncated-text">Check-in: After 2:00 pm,Check out: 12:00 pm,No smoking,No pets</td>
                   <td class="truncated-text">5 image links</td>
                   <td class="price">11,339</td>
                   <td class="country">Turkey</td>
@@ -343,22 +296,10 @@ df.head()</code></pre>
                   <td>Arp Sapanca</td>
                   <td>414884116</td>
                   <td class="truncated-text">Sapanca, Sakarya, Turkey</td>
-                  <td class="truncated-text">
-                    2 guests,1 bedroom,1 bed,1 bathroom
-                  </td>
-                  <td class="truncated-text">
-                    Kitchen,Wifi,Free parking on premises,TV,Air
-                    conditioning,Long-term stays allowed
-                  </td>
-                  <td class="truncated-text">
-                    Airbnb's COVID-19 safety practices apply,Carbon monoxide
-                    alarm not reported,Smoke alarm not reported,Nearby lake,
-                    river, other body of water
-                  </td>
-                  <td class="truncated-text">
-                    Check-in: After 2:00 pm,Check out: 12:00 pm,No smoking,No
-                    pets,No parties or events
-                  </td>
+                  <td class="truncated-text">2 guests,1 bedroom,1 bed,1 bathroom</td>
+                  <td class="truncated-text">Kitchen,Wifi,Free parking on premises,TV,Air conditioning,Long-term stays allowed</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,Carbon monoxide alarm not reported,Smoke alarm not reported,Nearby lake, river, other body of water</td>
+                  <td class="truncated-text">Check-in: After 2:00 pm,Check out: 12:00 pm,No smoking,No pets,No parties or events</td>
                   <td class="truncated-text">5 image links</td>
                   <td class="price">6,673</td>
                   <td class="country">Turkey</td>
@@ -374,14 +315,13 @@ df.head()</code></pre>
               </tbody>
             </table>
           </div>
+          
           <div class="table-note">
             <p>
-              <strong>Note:</strong> This table displays the first 5 rows of the
-              complete dataset. The full dataset contains 12,805 rows and 23
-              columns. Some columns have been truncated for display purposes.
+              <strong>Note:</strong> This table displays the first 5 rows of the complete dataset. The full dataset contains 12,805 rows and 23 columns. Some columns have been truncated for display purposes.
             </p>
           </div>
-          <!-- Dataset Columns Display -->
+
           <h3>Dataset Columns</h3>
           <p>
             From an initial look at the first five columns of the dataframe, we
@@ -398,6 +338,7 @@ df.head()</code></pre>
             </div>
             <pre><code class="python">df.dtypes</code></pre>
           </div>
+          
           <div class="data-table-container">
             <table class="data-table">
               <thead>
@@ -420,9 +361,7 @@ df.head()</code></pre>
                 </tr>
                 <tr>
                   <td class="data-table-cell">rating</td>
-                  <td class="data-table-cell">
-                    Rating score or "New" for new listings
-                  </td>
+                  <td class="data-table-cell">Rating score or "New" for new listings</td>
                   <td class="data-table-cell">mixed</td>
                 </tr>
                 <tr>
@@ -447,9 +386,7 @@ df.head()</code></pre>
                 </tr>
                 <tr>
                   <td class="data-table-cell">features</td>
-                  <td class="data-table-cell">
-                    Property features and capacity
-                  </td>
+                  <td class="data-table-cell">Property features and capacity</td>
                   <td class="data-table-cell">object</td>
                 </tr>
                 <tr>
@@ -464,9 +401,7 @@ df.head()</code></pre>
                 </tr>
                 <tr>
                   <td class="data-table-cell">hourse_rules</td>
-                  <td class="data-table-cell">
-                    House rules (note: contains typo)
-                  </td>
+                  <td class="data-table-cell">House rules (note: contains typo)</td>
                   <td class="data-table-cell">object</td>
                 </tr>
                 <tr>
@@ -501,9 +436,7 @@ df.head()</code></pre>
                 </tr>
                 <tr>
                   <td class="data-table-cell">toiles</td>
-                  <td class="data-table-cell">
-                    Number of toilets (note: contains typo)
-                  </td>
+                  <td class="data-table-cell">Number of toilets (note: contains typo)</td>
                   <td class="data-table-cell">int64</td>
                 </tr>
                 <tr>
@@ -536,6 +469,7 @@ df.head()</code></pre>
               </tfoot>
             </table>
           </div>
+
           <p style="margin-left: 20px">
             While there are some columns that are int64 columns, many of them
             are object columns, which means that there is needed preprocessing
@@ -610,6 +544,7 @@ for row in df.itertuples(index=True):
 df.head()
                     </code></pre>
           </div>
+          
           <h3>Cleaning up the Check in/Check out time</h3>
           <p style="margin-left: 20px">
             Adds two new intermediary columns and two new final columns
@@ -743,6 +678,7 @@ df.head()
           </div>
         </div>
       </section>
+
       <section id="eda" class="fade-in">
         <h2>Exploratory Data Analysis</h2>
         <div class="card">
@@ -764,6 +700,7 @@ df.head()
           </p>
         </div>
       </section>
+
       <section id="ml" class="fade-in">
         <h2>Primary Analysis (Machine Learning)</h2>
         <div class="card">
@@ -791,6 +728,7 @@ model.fit(X_train, y_train)
           </div>
         </div>
       </section>
+
       <section id="viz" class="fade-in">
         <h2>Visualization of Results</h2>
         <div class="card">
@@ -806,6 +744,7 @@ model.fit(X_train, y_train)
           </div>
         </div>
       </section>
+
       <section id="conclusion" class="fade-in">
         <h2>Insights & Conclusion</h2>
         <div class="card highlight-card">
@@ -815,7 +754,7 @@ model.fit(X_train, y_train)
             <li>Insight 2: Our model proves that...</li>
             <li>Insight 3: Future work could include...</li>
           </ul>
-          <p>Does the reader feel informed? [cite: 72]</p>
+          <p>Does the reader feel informed?</p>
         </div>
       </section>
     </main>

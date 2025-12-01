@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Create an intersection observer
     const appearOptions = {
-        // CHANGED: Lower threshold to 0.05 (5%).
+        // Lower threshold to 0.05 (5%).
         // This ensures that even if an element is taller than the screen (like your data table),
         // it will trigger as soon as the top 5% touches the viewport.
         threshold: 0.05, 
