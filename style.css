@@ -395,7 +395,7 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .dataset-info {
     flex-direction: column;
   }
@@ -403,7 +403,7 @@ footer {
   .info-card {
     min-width: 100%;
   }
-}
+} */
 
 
 /* -------------------------------
