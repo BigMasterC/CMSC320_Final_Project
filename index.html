@@ -1,212 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CMSC 320 Final Tutorial</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="assests\images\larger_favicon_CMSC320.png" type="image/png">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="assests/images/larger_favicon_CMSC320.png"
+      type="image/png"
+    />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="assests\images\larger_favicon_CMSC320.png" alt="Project Logo" class="nav-icon">
-                CMSC320 Final Project Project
-            </a>
-            <ul class="nav-links">
-                <li><a href="#intro">Intro</a></li>
-                <li><a href="#curation">Data</a></li>
-                <li><a href="#eda">EDA</a></li>
-                <li><a href="#ml">Machine Learning</a></li>
-                <li><a href="#conclusion">Insights</a></li>
-            </ul>
-        </div>
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <img
+            src="assests/images/larger_favicon_CMSC320.png"
+            alt="Project Logo"
+            class="nav-icon"
+          />
+          CMSC320 Final Project
+        </a>
+        <ul class="nav-links">
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#curation">Data</a></li>
+          <li><a href="#eda">EDA</a></li>
+          <li><a href="#ml">Machine Learning</a></li>
+          <li><a href="#conclusion">Insights</a></li>
+        </ul>
+      </div>
     </nav>
 
     <header class="hero">
-        <div class="container">
-            <span class="badge">Fall 2025 • CMSC 320</span>
-            <h1>Airbnb by the Numbers: Trends, Predictions, and Insights </h1>
-            <p class="subtitle">A tutorial walking through our journey mapping geographic trends in the short-term rental market.</p>
-            
-            <div class="github-button-container">
-            <a href="https://github.com/BigMasterC/CMSC320_Final_Project" class="airbnb-button">
-                <i class="fa-brands fa-github fa-lg"></i>
-                View Code on GitHub
-            </a>
-            </div>
-            <div class="card contributors">
-                <h3>👥 Team Contributions</h3>
-                <div class="contribution-grid">
-                    <div class="member">
-                        <strong>Chibundu Onwuegbule</strong>
-                        <p>Sections: A, G</p>
-                        <small>[Placeholder for tasks completed for this project]</small>
-                    </div>
-                    <div class="member">
-                        <strong>Aditya Chattopadhyay</strong>
-                        <p>Section: B</p>
-                        <small>[Placeholder for tasks completed for this project]</small>
-                    </div>
-                    <div class="member">
-                        <strong>Thomas Huitema</strong>
-                        <p>Section: C</p>
-                        <small>[Placeholder for tasks completed for this project]</small>
-                    </div>
-                    <div class="member">
-                        <strong>Arnav Doshi</strong>
-                        <p>Sections: C</p>
-                        <small>[Placeholder for tasks completed for this project]</small>
-                    </div>
-                    <div class="member">
-                        <strong>Zhiteng Ke</strong>
-                        <p>Sections: D, E, F</p>
-                        <small>[Placeholder for tasks completed for this project]</small>
-                    </div>
-                    <div class="member">
-                        <strong>Alex Mohamed</strong>
-                        <p>Sections: D, E, F</p>
-                        <small>[Placeholder for tasks completed for this project]</small>
-                    </div>
-                </div>
-
+      <div class="container">
+        <span class="badge">Fall 2025 • CMSC 320</span>
+        <h1>Airbnb by the Numbers: Trends, Predictions, and Insights</h1>
+        <p class="subtitle">
+          A tutorial walking through our journey mapping geographic trends in
+          the short-term rental market.
+        </p>
+        <div class="github-button-container">
+          <a
+            href="https://github.com/BigMasterC/CMSC320_Final_Project"
+            class="airbnb-button"
+          >
+            <i class="fa-brands fa-github fa-lg"></i>
+            View Code on GitHub
+          </a>
         </div>
+        <div class="card contributors">
+          <h3>👥 Team Contributions</h3>
+          <div class="contribution-grid">
+            <div class="member">
+              <strong>Chibundu Onwuegbule</strong>
+              <p>Sections: A, G</p>
+              <small>[Placeholder for tasks completed for this project]</small>
+            </div>
+            <div class="member">
+              <strong>Aditya Chattopadhyay</strong>
+              <p>Section: B</p>
+              <small>[Placeholder for tasks completed for this project]</small>
+            </div>
+            <div class="member">
+              <strong>Thomas Huitema</strong>
+              <p>Section: C</p>
+              <small>[Placeholder for tasks completed for this project]</small>
+            </div>
+            <div class="member">
+              <strong>Arnav Doshi</strong>
+              <p>Sections: C</p>
+              <small>[Placeholder for tasks completed for this project]</small>
+            </div>
+            <div class="member">
+              <strong>Zhiteng Ke</strong>
+              <p>Sections: D, E, F</p>
+              <small>[Placeholder for tasks completed for this project]</small>
+            </div>
+            <div class="member">
+              <strong>Alex Mohamed</strong>
+              <p>Sections: D, E, F</p>
+              <small>[Placeholder for tasks completed for this project]</small>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main class="container">
+      <section id="intro" class="fade-in">
+        <h2>Introduction</h2>
+        <div class="card">
+          <p>
+            [Placeholder for a proper introduction to the project topic and its
+            significance.]
+          </p>
+        </div>
+      </section>
 
-        <section id="intro" class="fade-in">
-            <h2>Introduction</h2>
-            <div class="card">
-                <p>
-                    <!-- What is your topic? What questions are you trying to answer? Why does this matter?
-                    For example, "We are analyzing X to predict Y because Z." -->
-                    [Placeholder for a proper introduction to the project topic and its significance.]
-                </p>
+      <section id="curation" class="fade-in">
+        <h2>Data Curation</h2>
+        <div class="card">
+          <h3>Dataset Overview</h3>
+          <p>
+            <b>Dataset Citation:</b> Jangra, A. (2024, May 28).
+            <i>Airbnb dataset</i>. Kaggle.
+            <a
+              href="https://www.kaggle.com/datasets/ashishjangra27/airbnb-dataset"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.kaggle.com/datasets/ashishjangra27/airbnb-dataset
+            </a>
+          </p>
+          <br />
+          <p>
+            Our dataset is an Airbnb Dataset that we found on Kaggle that
+            consists of
+            <strong>12,805 samples</strong> that describe information on a
+            particular Airbnb offering with <strong>22 unique features</strong>.
+            We first explore the raw data that we pulled from Kaggle before
+            preprocessing the data for machine learning to answer our research
+            questions.
+          </p>
+          <br />
+          <div class="dataset-info">
+            <div class="info-card">
+              <h3>Dataset Size</h3>
+              <p>12,805 rows × 23 columns</p>
             </div>
-        </section>
-
-        <section id="curation" class="fade-in">
-            <h2>Data Curation</h2>
-            <div class="card">
-                <h3>Source & Parsing</h3>
-                <p>
-                    [Placeholder for data source description and how the data was parsed, cleaned, and engineered]
-                    <!-- We obtained our dataset from [Source Name]. The raw data was in JSON format... -->
-                </p>
-                
-                <div class="code-container">
-                    <div class="code-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span>data_processing.py</span>
-                    </div>
-                    <pre><code>
-import pandas as pd
-import numpy as np
-
-# Load the dataset
-df = pd.read_csv('data/raw_data.csv')
-
-# Drop missing values
-df = df.dropna(subset=['target_variable'])
-                    </code></pre>
-                </div>
+            <div class="info-card">
+              <h3>Price Range</h3>
+              <p>393 - 1,907,963 (local currency)</p>
             </div>
-        </section>
-
-        <section id="eda" class="fade-in">
-            <h2>Exploratory Data Analysis</h2>
-            <div class="card">
-                <h3>Summary Statistics</h3>
-                <p>
-                    The dataset contains X entries and Y features. We observed a strong correlation between...
-                </p>
-                
-                <div class="plot-container">
-                    <div class="placeholder-image">
-                        [Insert Distribution Plot Here]
-                    </div>
-                    <p class="caption">Figure 1: Distribution of the primary variable showing outliers.</p>
-                </div>
-
-                <h3>Hypothesis Testing</h3>
-                <p>
-                    We performed a T-test to determine if the difference in means was significant...
-                </p>
+            <div class="info-card">
+              <h3>Countries</h3>
+              <p>11,836 countries represented</p>
             </div>
-        </section>
+          </div>
 
-        <section id="ml" class="fade-in">
-            <h2>Primary Analysis (Machine Learning)</h2>
-            <div class="card">
-                <h3>Technique Selection</h3>
-                <p>
-                    We chose Random Forest Regression because our data is non-linear and high-dimensional...
-                </p>
-                
-                <h3>Training & Testing</h3>
-                <div class="code-container">
-                    <div class="code-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span>model_training.py</span>
-                    </div>
-                    <pre><code>
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
+          <h3>Complete Dataset</h3>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code class="python"># Loading the dataset and printing its first 5 rows prior to pre-processing
+df = pd.read_csv("airbnb.csv")
+df.head()</code></pre>
+          </div>
+          
+          <p>Scroll horizontally and vertically to view all columns and rows</p>
+          <div class="complete-dataset-container">
+            <table class="complete-dataset-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Rating</th>
+                  <th>Reviews</th>
+                  <th>Host Name</th>
+                  <th>Host ID</th>
+                  <th>Address</th>
+                  <th>Features</th>
+                  <th>Amenities</th>
+                  <th>Safety Rules</th>
+                  <th>House Rules</th>
+                  <th>Image Links</th>
+                  <th>Price</th>
+                  <th>Country</th>
+                  <th>Bathrooms</th>
+                  <th>Beds</th>
+                  <th>Guests</th>
+                  <th>Toilets</th>
+                  <th>Bedrooms</th>
+                  <th>Studios</th>
+                  <th>Check-in</th>
+                  <th>Check-out</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>49849504</td>
+                  <td>Perla bungalov</td>
+                  <td class="rating-high">4.71</td>
+                  <td>64</td>
+                  <td>Mehmetcan</td>
+                  <td>357334205</td>
+                  <td class="truncated-text">Kartepe, Kocaeli, Turkey</td>
+                  <td class="truncated-text">2 guests,2 bedrooms,1 bed,1 bathroom</td>
+                  <td class="truncated-text">Mountain view,Valley view,Lake access,Kitchen,Wifi,Free parking on premises,Pets allowed,TV</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,No carbon monoxide alarm,No smoke alarm,Nearby lake, river, other body of water</td>
+                  <td class="truncated-text">Check-in: Flexible,Check out: 12:00 pm,Pets are allowed,Smoking is allowed</td>
+                  <td class="truncated-text">5 image links</td>
+                  <td class="price">8,078</td>
+                  <td class="country">Turkey</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>Flexible</td>
+                  <td>12:00 pm</td>
+                </tr>
+                <tr>
+                  <td>50891766</td>
+                  <td>Authentic Beach Architect Sheltered Villa with Pool and Jacuzzi</td>
+                  <td class="rating-new">New</td>
+                  <td>0</td>
+                  <td>Fatih</td>
+                  <td>386223873</td>
+                  <td class="truncated-text">Kaş, Antalya, Turkey</td>
+                  <td class="truncated-text">4 guests,2 bedrooms,2 beds,2 bathrooms</td>
+                  <td class="truncated-text">Kitchen,Wifi,Dedicated workspace,Free parking on premises,Private pool,Private hot tub,TV,Washing machine</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,Carbon monoxide alarm not reported,Smoke alarm not reported</td>
+                  <td class="truncated-text">Check-in: 4:00 pm - 11:00 pm,Check out: 10:00 am,No smoking,No pets,No parties or events</td>
+                  <td class="truncated-text">5 image links</td>
+                  <td class="price">4,665</td>
+                  <td class="country">Turkey</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>4</td>
+                  <td>0</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>4:00 pm - 11:00 pm</td>
+                  <td>10:00 am</td>
+                </tr>
+                <tr>
+                  <td>50699164</td>
+                  <td>cottages sataplia</td>
+                  <td class="rating-high">4.85</td>
+                  <td>68</td>
+                  <td>Giorgi</td>
+                  <td>409690853</td>
+                  <td class="truncated-text">Imereti, Georgia</td>
+                  <td class="truncated-text">4 guests,1 bedroom,3 beds,1 bathroom</td>
+                  <td class="truncated-text">Mountain view,Kitchen,Wifi,Dedicated workspace,Free driveway parking on premises,Pets allowed,40" HDTV with cable/satellite TV,Lift</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,No carbon monoxide alarm,No smoke alarm</td>
+                  <td class="truncated-text">Check-in: After 1:00 pm,Check out: 12:00 pm,Self check-in with lockbox,Pets are allowed</td>
+                  <td class="truncated-text">5 image links</td>
+                  <td class="price">5,991</td>
+                  <td class="country">Georgia</td>
+                  <td>1</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>After 1:00 pm</td>
+                  <td>12:00 pm</td>
+                </tr>
+                <tr>
+                  <td>49871422</td>
+                  <td>Sapanca Breathable Bungalow</td>
+                  <td class="rating-high">5.0</td>
+                  <td>13</td>
+                  <td>Melih</td>
+                  <td>401873242</td>
+                  <td class="truncated-text">Sapanca, Sakarya, Turkey</td>
+                  <td class="truncated-text">4 guests,1 bedroom,2 beds,1 bathroom</td>
+                  <td class="truncated-text">Mountain view,Valley view,Kitchen,Wifi,Free parking on premises,Private pool,42" HDTV with Netflix,Security cameras on property</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,No carbon monoxide alarm,No smoke alarm,Security camera/recording device,Nearby lake, river, other body of water</td>
+                  <td class="truncated-text">Check-in: After 2:00 pm,Check out: 12:00 pm,No smoking,No pets</td>
+                  <td class="truncated-text">5 image links</td>
+                  <td class="price">11,339</td>
+                  <td class="country">Turkey</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>4</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>After 2:00 pm</td>
+                  <td>12:00 pm</td>
+                </tr>
+                <tr>
+                  <td>51245886</td>
+                  <td>Bungalov Ev 2</td>
+                  <td class="rating-new">New</td>
+                  <td>0</td>
+                  <td>Arp Sapanca</td>
+                  <td>414884116</td>
+                  <td class="truncated-text">Sapanca, Sakarya, Turkey</td>
+                  <td class="truncated-text">2 guests,1 bedroom,1 bed,1 bathroom</td>
+                  <td class="truncated-text">Kitchen,Wifi,Free parking on premises,TV,Air conditioning,Long-term stays allowed</td>
+                  <td class="truncated-text">Airbnb's COVID-19 safety practices apply,Carbon monoxide alarm not reported,Smoke alarm not reported,Nearby lake, river, other body of water</td>
+                  <td class="truncated-text">Check-in: After 2:00 pm,Check out: 12:00 pm,No smoking,No pets,No parties or events</td>
+                  <td class="truncated-text">5 image links</td>
+                  <td class="price">6,673</td>
+                  <td class="country">Turkey</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>After 2:00 pm</td>
+                  <td>12:00 pm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="table-note">
+            <p>
+              <strong>Note:</strong> This table displays the first 5 rows. The full dataset contains 12,805 rows.
+            </p>
+          </div>
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = RandomForestRegressor(n_estimators=100)
+          <h3>Dataset Columns</h3>
+          <p>
+            From an initial look at the first five columns of the dataframe, we
+            see that each of these different features can be complex and there
+            is need for a lot of cleaning so that this data can be used for
+            machine learning.
+          </p>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code class="python">df.dtypes</code></pre>
+          </div>
+          
+          <div class="data-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="data-table-header">Column Name</th>
+                  <th class="data-table-header">Description</th>
+                  <th class="data-table-header">Data Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="data-table-cell">id</td>
+                  <td class="data-table-cell">Property ID number</td>
+                  <td class="data-table-cell">int64</td>
+                </tr>
+                <tr>
+                  <td class="data-table-cell">name</td>
+                  <td class="data-table-cell">Property name/title</td>
+                  <td class="data-table-cell">object</td>
+                </tr>
+                <tr>
+                  <td class="data-table-cell">rating</td>
+                  <td class="data-table-cell">Rating score or "New"</td>
+                  <td class="data-table-cell">mixed</td>
+                </tr>
+                <tr>
+                  <td class="data-table-cell">reviews</td>
+                  <td class="data-table-cell">Number of reviews</td>
+                  <td class="data-table-cell">int64</td>
+                </tr>
+                <tr>
+                  <td class="data-table-cell">price</td>
+                  <td class="data-table-cell">Price per night</td>
+                  <td class="data-table-cell">int64</td>
+                </tr>
+                <tr>
+                  <td class="data-table-cell">country</td>
+                  <td class="data-table-cell">Country location</td>
+                  <td class="data-table-cell">object</td>
+                </tr>
+                <tr>
+                  <td class="data-table-cell">checkin</td>
+                  <td class="data-table-cell">Check-in time</td>
+                  <td class="data-table-cell">object</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            While most of the columns have no missing data, host_name, checkin,
+            and checkout are missing some data.
+          </p>
+
+          <h3>Data Preprocessing</h3>
+          <p>
+            We used a decision tree regressor to impute missing rating values.
+          </p>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code class="python"># Training the model
 model.fit(X_train, y_train)
-                    </code></pre>
-                </div>
-            </div>
-        </section>
 
-        <section id="viz" class="fade-in">
-            <h2>Visualization of Results</h2>
-            <div class="card">
-                <p>
-                    The model achieved an accuracy of 85%. The plot below visualizes the predicted vs actual values.
-                </p>
-                <div class="plot-container">
-                    <div class="placeholder-image">
-                        [Insert Confusion Matrix or Regression Plot Here]
-                    </div>
-                    <p class="caption">Figure 2: Model performance on the test set.</p>
-                </div>
+# Using the model to make predictions for rows missing data
+for row in df.itertuples(index=True):
+  if row.rating == 'New':
+    # Prediction logic here...
+    df.at[row.Index, 'rating'] = round(prediction.item(0), 2)
+</code></pre>
+          </div>
+          
+          <h3>Cleaning up the Check in/Check out time</h3>
+          <p>
+            We normalized messy time strings (e.g., "4pm - 11pm", "Flexible") into standard datetime objects.
+          </p>
+          
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
             </div>
-        </section>
+            <pre><code class="python">def parse_time_text(text):
+    # Parses to see if the particular text matches with a time format
+    match = re.search(r'(\d{1,2})\s*(\d{2})?\s*(am|pm)', text)
+    if not match:
+        return None
+    # Logic to convert to datetime object...
+    return dt.time(hour, minute)</code></pre>
+          </div>
+        </div>
+      </section>
 
-        <section id="conclusion" class="fade-in">
-            <h2>Insights & Conclusion</h2>
-            <div class="card highlight-card">
-                <h3>Key Takeaways</h3>
-                <ul>
-                    <li>Insight 1: The data suggests that...</li>
-                    <li>Insight 2: Our model proves that...</li>
-                    <li>Insight 3: Future work could include...</li>
-                </ul>
-                <p>
-                    Does the reader feel informed? [cite: 72]
-                </p>
+      <section id="eda" class="fade-in">
+        <h2>Exploratory Data Analysis</h2>
+        <div class="card">
+          <h3>Summary Statistics</h3>
+          <p>
+            The dataset contains X entries and Y features. We observed a strong
+            correlation between...
+          </p>
+          <div class="plot-container">
+            <div class="placeholder-image">[Insert Distribution Plot Here]</div>
+            <p class="caption">
+              Figure 1: Distribution of the primary variable showing outliers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ml" class="fade-in">
+        <h2>Primary Analysis (Machine Learning)</h2>
+        <div class="card">
+          <h3>Technique Selection</h3>
+          <p>
+            We chose Random Forest Regression because our data is non-linear and
+            high-dimensional...
+          </p>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>model_training.py</span>
             </div>
-        </section>
+            <pre><code>from sklearn.ensemble import RandomForestRegressor
+model = RandomForestRegressor(n_estimators=100)
+model.fit(X_train, y_train)</code></pre>
+          </div>
+        </div>
+      </section>
 
+      <section id="conclusion" class="fade-in">
+        <h2>Insights & Conclusion</h2>
+        <div class="card highlight-card">
+          <h3>Key Takeaways</h3>
+          <ul>
+            <li>Insight 1: The data suggests that...</li>
+            <li>Insight 2: Our model proves that...</li>
+            <li>Insight 3: Future work could include...</li>
+          </ul>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 CMSC 320 Group Project. Built with data and coffee.</p>
+      <p>&copy; 2025 CMSC 320 Group Project. Built with data and coffee.</p>
     </footer>
-
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
