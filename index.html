@@ -20,88 +20,6 @@
       href="assests\images\larger_favicon_CMSC320.png"
       type="image/png"
     />
-    <style>
-      /* Additional styles for the complete dataset table */
-      .complete-dataset-container {
-        overflow-x: auto;
-        border-radius: 12px;
-        border: 1px solid #dddddd;
-        margin-bottom: 30px;
-        max-height: 600px;
-        overflow-y: auto;
-        box-shadow: var(--shadow-sm);
-      }
-      .complete-dataset-table {
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 1600px;
-        background: var(--white);
-      }
-      .complete-dataset-table th {
-        background-color: var(--primary);
-        color: var(--white);
-        position: sticky;
-        top: 0;
-        font-weight: 600;
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 2px solid #e0e0e0;
-      }
-      .complete-dataset-table td {
-        padding: 10px 15px;
-        border-bottom: 1px solid #f0f0f0;
-      }
-      .complete-dataset-table tbody tr:hover {
-        background-color: #f9f9f9;
-      }
-      .complete-dataset-table .rating-high {
-        color: #00a699;
-        font-weight: bold;
-      }
-      .complete-dataset-table .rating-new {
-        color: var(--primary);
-        font-weight: bold;
-      }
-      .complete-dataset-table .price {
-        font-weight: bold;
-      }
-      .complete-dataset-table .country {
-        font-weight: 500;
-      }
-      .truncated-text {
-        max-width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .table-note {
-        background-color: #fff8e1;
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 20px;
-        border-left: 4px solid #ffc107;
-      }
-      .dataset-info {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-      .info-card {
-        background-color: var(--bg-light);
-        padding: 15px;
-        border-radius: 8px;
-        flex: 1;
-        min-width: 200px;
-        border: 1px solid #dddddd;
-      }
-      .info-card h3 {
-        color: var(--primary);
-        margin-bottom: 10px;
-        font-size: 1.1rem;
-      }
-    </style>
   </head>
   <body>
     <nav class="navbar">
@@ -632,7 +550,7 @@ df.head()</code></pre>
             </div>
             <pre><code class="python">df.count()</code></pre>
           </div>
-          
+
           <p>
             While most of the columns have no missing data, host_name, checkin,
             and checkout are missing some data, with checkout missing the most
@@ -786,7 +704,7 @@ df.head()
               </ul>
             </li>
           </ol>
-                    <div class="code-container">
+          <div class="code-container">
             <div class="code-header">
               <span class="dot red"></span>
               <span class="dot yellow"></span>
@@ -823,8 +741,6 @@ df.head()
     return dt.time(hour, minute)
  # NOTE: Full code snippet can be found on the GitHub Repo </code></pre>
           </div>
-          
-    
         </div>
       </section>
       <section id="eda" class="fade-in">
