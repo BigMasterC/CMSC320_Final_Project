@@ -82,6 +82,47 @@ body {
     text-decoration: underline;
 }
 
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    padding: 5px;
+}
+
+/* Mobile Responsiveness for Nav */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        /* Hidden by default on mobile */
+        display: none; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Shown when 'active' class is added via JS */
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+    }
+}
+
 /* Layout */
 .container {
     max-width: 800px;
@@ -155,6 +196,12 @@ h3 {
 
 .highlight-card {
     border-left: 5px solid var(--primary);
+}
+
+/* URL Overflow Fix */
+.long-link {
+    overflow-wrap: break-word;
+    word-break: break-word; /* ensures the link breaks even if it has no hyphens */
 }
 
 /* Contributors Grid */
@@ -421,10 +468,6 @@ footer {
 
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
-    .nav-links {
-        display: none; 
-    }
-    
     h1 { font-size: 1.8rem; }
     
     .card { padding: 20px; }

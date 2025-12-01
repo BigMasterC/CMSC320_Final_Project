@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Select all elements with the 'fade-in' class
+    // ---------------------------------
+    // FADE IN ANIMATION LOGIC
+    // ---------------------------------
     const faders = document.querySelectorAll('.fade-in');
 
-    // Create an intersection observer
     const appearOptions = {
-        // Lower threshold to 0.05 (5%).
-        // This ensures that even if an element is taller than the screen (like your data table),
-        // it will trigger as soon as the top 5% touches the viewport.
         threshold: 0.05, 
         rootMargin: "0px 0px -50px 0px"
     };
@@ -17,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             } else {
                 entry.target.classList.add('visible');
-                // Stop observing once it's visible so we don't toggle it again
                 appearOnScroll.unobserve(entry.target);
             }
         });
@@ -25,5 +22,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
+    });
+
+    // ---------------------------------
+    // HAMBURGER MENU LOGIC
+    // ---------------------------------
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu when hamburger is clicked
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Close menu when a link is clicked (better UX for single-page apps)
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
     });
 });
