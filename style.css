@@ -395,6 +395,17 @@ footer {
     }
 }
 
+@media (max-width: 600px) {
+  .dataset-info {
+    flex-direction: column;
+  }
+
+  .info-card {
+    min-width: 100%;
+  }
+}
+
+
 /* -------------------------------
    Complete Dataset Table (moved from inline HTML)
 -------------------------------- */
@@ -409,10 +420,14 @@ footer {
   box-shadow: var(--shadow-sm);
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 .complete-dataset-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 1600px;
+  min-width: 900px;
   background: var(--white);
 }
 
