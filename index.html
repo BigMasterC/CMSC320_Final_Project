@@ -128,8 +128,9 @@
 # Importing the necessary Python Libraries
 from sklearn.svm import SVR
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_sqaured_error, r2_score
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import mean_sqaured_error, r2_score, mean_absolute_error
 from scipy.stats import pearsonr
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -922,6 +923,90 @@ print("pearson correlation:" + str(pearson_corr) + "p-value:" + str(pearson_p))<
             which means the rating variable is not being heavily factored into the price predictions being 
             made by the model.
           </p>
+          <br><hr>
+
+          <h3>Model 2: Can Check-In Time Be Used to Predict Check-Out Time?</h3>
+          <p>
+            After the data cleaning, it is easy for us to see some difference between the check-in and 
+            check-out times. We decide to use a K-Nearest Neighbors Regressor to predict check-out time 
+            based on check-in time.
+          </p>
+          <h3>Training & Testing the Model</h3>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>model_two_training.py</span>
+            </div>
+            <pre><code>
+  # Initializing key variables
+  seed = 42
+  X = df[['checkin_minutes']].values
+  y = df[['checkout_minutes']].values
+
+  # Split
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=seed)
+
+  # Using KNN Regression instead of DecisionTree or LinearRegression
+  regressor = KNeighborsRegressor(n_neighbors=47)
+
+  # Fitting the model and predicting
+  regressor.fit(X_train, y_train)
+  y_train_pred = regressor.predict(X_train)
+  y_test_pred = regressor.predict(X_test)
+
+  # Evaluating the model with MSE
+  mse_train = mean_squared_error(y_true=y_train, y_pred=y_train_pred)
+  mse_test = mean_sqaured_error(y_true=y_test, y_pred=y_test_pred)
+
+  # Evaluating the model with R2
+  r2_train = r2_score(y_true=y_train, y_pred=y_train_pred)
+  r2_test = r2_score(y_true=y_test, y_pred=y_test_pred)
+
+  # Evaluating the model with RMSE
+  rmse_train = np.sqrt(mse_train)
+  rmse_test = np.sqrt(mse_test)
+
+  # Evaluating the model with MAE
+  mae_train = mean_absolute_error(y_train, y_train_pred)
+  mae_test = mean_absolute_error(y_test, y_test_pred)
+
+  print(f"MSE for Training Data: {mse_train}")
+  print(f"MSE for Testing Data: {mse_test}")
+  print(f"R2 Score for Training Data: {r2_train}")
+  print(f"R2 Score for Testing Data: {r2_test}")
+  print(f"RMSE for Training Data: {rmse_train:}")
+  print(f"RMSE for Testing Data: {rmse_test:}")
+  print(f"MAE for Training Data: {mae_train:}")
+  print(f"MAE for Testing Data: {mae_test:}")
+            </code></pre>
+          </div>
+          <p>
+            <em>Output:</em><br>
+            MSE for Training Data: 7079.132472337703<br>
+            MSE for Testing Data: 6527.210168758703<br>
+            R2 Score for Training Data: 0.011091379647019006<br>
+            R2 Score for Testing Data: -0.010313096492119644<br>
+            RMSE for Training Data: 84.13758061851851<br>
+            RMSE for Testing Data: 80.79115154989873<br>
+            MAE for Training Data: 40.97805046233602<br>
+            MAE for Testing Data: 41.00210190500719
+            <br><br>
+            <em>Analysis:</em><br>
+            <strong>MSE: </strong> The training and testing MSE values are close to each other, 
+            which suggests this model is not severely overfitting; the model generalizes 
+            consistently -- but consistently poorly.
+            <br><br>
+            <strong>RMSE: </strong>On average, predictions are off by about 80-85 minutes. This 
+            is a large error relative to typical check-out times, indicating low accuracy.
+            <br><br>
+            <strong>MAE: </strong>Predictions are wrong by 41 minutes on average. Nearly identical 
+            train/test MAE shows the model is stable but weak.
+            <br><br>
+            <strong>R<sup>2</sup>: </strong>The resulting R<sup>2</sup> score being close to 0 shows 
+            that the check-in and check-out times possess a weak correlation.
+          </p>
       </div>
       </section>
 
@@ -961,6 +1046,39 @@ plt.ylabel('Price (Natural Log)')
             <p class="caption">Figure 3: Rating vs. Price Regression Graph</p>
           </div>
           <p><em>NOTE: The y-axis represents the natural log of the actual prices to make the model more clear!</em></p>
+
+          <h3>Model 2 Visualization</h3>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>model_two_visualization.py</span>
+            </div>
+            <pre><code>
+  plt.figure(figsize=(8, 6))
+  
+  y_pred = regressor.predict(X_test)
+
+  plt.scatter(X_train, y_train, color='blue', label='Training Data')
+  plt.scatter(X_test, y_test, color='orange', label='Testing Data')
+  plt.plot(X_test, y_pred, color='green', linewidth=3, label='KNN Prediction')
+
+  plt.xlabel("Check-in Minutes")
+  plt.ylabel("Check-out Minutes")
+  plt.title("KNN Regression")
+  plt.legend()
+  plt.show()
+            </code></pre>
+          </div>
+
+          <p><em>Output:</em></p>
+          <div class="plot-container">
+            <div class="regression-graph">
+              <img src="/CMSC320_Final_Project/assests/images/checkin_vs_checkout_regression_graph.png" alt="checking_vs_checkout_regression_graph">
+            </div>
+            <p class="caption">Figure 4: Check-In vs. Check-Out Regression Graph</p>
+          </div>
         </div>
       </section>
 
@@ -969,7 +1087,7 @@ plt.ylabel('Price (Natural Log)')
         <div class="card highlight-card">
           <h3>Key Takeaways</h3>
           <ul>
-            <li>Insight 1: Based on the MSE results, it appears that it is possible to 
+            <li>Model 1 Insight: Based on the MSE results, it appears that it is possible to 
               use an Airbnb's rating to get a rough estimate of the location's price.
               However, by analyzing the graph and R-squared values, it is evident that 
               most of the data being used for this analysis have very similar ratings (~4.8).
@@ -978,8 +1096,27 @@ plt.ylabel('Price (Natural Log)')
               likely causing the model to depend less on the "Rating" variable to make a price 
               prediction, and more so on memorizing the training data (which highly resembles 
               the testing data numerically).</li><br>
-            <li>Insight 2: Our model proves that...</li><br>
-            <li>Insight 3: Future work could include...</li>
+            <li>Model 2 Conclusion: Based on this analysis, an Airbnb's rating can be 
+              used to predict the Airbnb's price. However, these findings should be confirmed by 
+              repeating the analysis with a more diverse set of locations (especially in terms 
+              of ratings).
+            </li><br>
+            <li>Model 2 Insight: By examining this plot, it becomes evident that using only a 
+              single feature provides limited predictive power. When relying solely on check-in 
+              time, the model struggles to accurately predict check-out time, as the relationship 
+              between the two variables appears weak and highly variable. The predicted values tend 
+              to cluster around the mean rather than follow the clear trend, indicating underfitting. 
+              This suggests that one feature alone is insufficient to capture the underlying patterns 
+              in the data. To better represent the complexity of check-out time behavior, additional 
+              features are needed to improve model performance and explanatory behavior.
+            </li><br>
+            <li>Model 2 Conclusion: Although the training and testing errors are similar, indicating 
+              stable model performance, the model explains almost none of the variance in check-out time. 
+              This poor explanatory power is likely due to the use of only a single predictor, check-in 
+              minutes. Incorporating additional relevant features -- such as hotel location, city, or 
+              other operational factors -- would likely improve the model's ability to capture variability 
+              in check-out time.
+            </li>
           </ul>
           <p><br>An uninformed reader should feel more informed regarding this topic after proceeding 
             through this tutorial, since they now have a better understanding of how different 
