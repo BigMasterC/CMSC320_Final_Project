@@ -126,7 +126,7 @@
             </div>
             <pre><code class="python">
 # Importing the necessary Python Libraries
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_sqaured_error, r2_score
@@ -548,7 +548,7 @@ X = df[df['rating'] != 'New']
 y = X[['rating']]
 X = X[['price', 'bathrooms', 'beds', 'guests', 'toiles', 'bedrooms', 'studios']]
 seed = 42
-model = DecisionTreeRegressor(random_state=seed)
+model = SVR(kernel='rbf')
 
 # Splitting the data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
@@ -570,9 +570,6 @@ for row in df.itertuples(index=True):
     }
     prediction = model.predict(pd.DataFrame(row_data))
     df.at[row.Index, 'rating'] = round(prediction.item(0), 2)
-
-# Printing out dataframe head with adjusted ratings
-df.head()
                     </code></pre>
           </div>
           
@@ -805,11 +802,7 @@ print(f"Max price: ${prices.max():,.0f}")</code></pre>
               <span class="dot green"></span>
               <span>data_processing.py</span>
             </div>
-            <pre><code class="python">import pandas as pd
-from scipy.stats import pearsonr
-import matplotlib.pyplot as plt
-import seaborn as sns
-
+            <pre><code class="python">
 # Convert columns to numeric
 df['price'] = pd.to_numeric(df['price'], errors='coerce')
 df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
@@ -838,16 +831,16 @@ print("pearson correlation:" + str(pearson_corr) + "p-value:" + str(pearson_p))<
           </div>
           
           <div class="plot-container">
-              <img src="assests/images/EDA_price_vs_rating.png" alt="A boxplot of price vs rating.">
+              <img src="assests/images/updated_EDA_price_vs_rating.png" alt="A boxplot of price vs rating.">
             <p class="caption">
-              Figure 2: Price vs rating.
+              Figure 2: Price vs. Rating Box Plot.
             </p>
           </div>
 
-          <p>The p-value is approximately 0.001, which means there is a 1/1000 chance of us this pearson correlation between price and rating if we fail to reject the null hypothesis. 
-            Because the p-value (0.001) is smaller than &alpha; (0.05), we reject the null hypothesis. Therefore, there exists a linear correlation between price and rating.</p>
+          <p>The p-value is approximately 2.332*10<sup>-12</sup>, which means there is a 1/(2.332*10<sup>12</sup>) chance of us this pearson correlation between price and rating if we fail to reject the null hypothesis. 
+            Because the p-value (2.332*10<sup>-12</sup>) is smaller than &alpha; (0.05), we reject the null hypothesis. Therefore, there exists a linear correlation between price and rating.</p>
           <br>
-          <p> The calculated pearson correlation is roughly 0.034, which signals a weak, positive relationship between price and rating.</p>
+          <p> The calculated pearson correlation is roughly 0.062, which signals a weak, positive relationship between price and rating.</p>
           
           
           <!-- CONCLUSION 3 -->
@@ -919,13 +912,13 @@ print("pearson correlation:" + str(pearson_corr) + "p-value:" + str(pearson_p))<
           <p>
             <em>Output:</em><br>
             Price and rating are still linearly correlated: True<br>
-            MSE for Training Data: 1.198452182252336<br>
-            MSE for Testing Data: 1.1769543401018487<br>
-            R2 Score for Training Data: 0.025859874573103014<br>
-            R2 Score for Testing Data: 0.024019899803277345<br><br>
+            MSE for Training Data: 1.1845185693698836<br>
+            MSE for Testing Data: 1.1615972494312397<br>
+            R2 Score for Training Data: 0.03718555915356958<br>
+            R2 Score for Testing Data: 0.03675464607230783<br><br>
             <em>Analysis:</em><br>
             While the mean-squared error (MSE) is low, indicating the predicted and true price values 
-            are close, the R-squared values are also low (~0.02 when higher values closer to 1 are best), 
+            are close, the R-squared values are also low (~0.04 when higher values closer to 1 are best), 
             which means the rating variable is not being heavily factored into the price predictions being 
             made by the model.
           </p>
@@ -960,13 +953,14 @@ plt.xlabel('Rating')
 plt.ylabel('Price (Natural Log)')
           </code></pre>
         </div>
-          <p><em>Output:</em><br>Text(0, 0.5, 'Price (Natural Log)')</p>
+          <p><em>Output:</em></p>
           <div class="plot-container">
             <div class="regression-graph">
-              <img src="/CMSC320_Final_Project/assests/images/rating_price_regression_graph.png" alt="rating_price_regression_graph">
+              <img src="/CMSC320_Final_Project/assests/images/updated_price_vs_rating_regression_graph.png" alt="rating_price_regression_graph">
             </div>
-            <p class="caption">Figure 2: Rating vs. Price Regression Graph</p>
+            <p class="caption">Figure 3: Rating vs. Price Regression Graph</p>
           </div>
+          <p><em>NOTE: The y-axis represents the natural log of the actual prices to make the model more clear!</em></p>
         </div>
       </section>
 
