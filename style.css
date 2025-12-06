@@ -438,6 +438,11 @@ code {
 .plot-container {
     margin: 20px 0;
     text-align: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 .placeholder-image {
@@ -476,4 +481,9 @@ footer {
     .complete-dataset-container {
         max-height: 400px;
     }
+}
+
+ul {
+  margin-left: 0; /* Reset default margin */
+  padding-left: 20px; /* Adjust as needed for the main list */
 }

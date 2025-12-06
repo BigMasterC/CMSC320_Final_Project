@@ -713,21 +713,147 @@ df.head()
       <section id="eda" class="fade-in">
         <h2>Exploratory Data Analysis</h2>
         <div class="card">
-          <h3>Summary Statistics</h3>
+          <p>In this section, we wish to better understand our data by discovering patterns between variables, uncovering characteristics of the dataset, and testing hypotheses. We explore three conclusions about our data:</p>
+          
+          <!-- CONCLUSION 1 -->
+          <h3>1. Does price have outliers?</h3>
           <p>
-            The dataset contains X entries and Y features. We observed a strong
-            correlation between...
+            We want to understand how the prices in our dataset are distributed. Are the some really high prices, really low prices, or is the data pretty clustered?
           </p>
+          <br>
+          <p>Let's start by examining the mean and median price:</p>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code class="python">prices = df['price']
+prices_mean = prices.mean()
+prices_median = prices.median()
+
+print(f"Prices mean vs median: ${prices_mean:,.0f} and ${prices_median:,.0f}")</code></pre>
+          </div>
+
+          <p>Mean price is more than double the median! This means the data is likely skewed right, and might have outliers.</p>
+          <br>
+          <p>Let's graph the prices to explore our suspicion.</p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code class="python">import matplotlib.pyplot as plt
+
+plt.hist(prices, bins=60, range=(0, 0.25e6))
+plt.title("Price distribution (Clipped to $250k)")
+plt.xlabel("Price ($)")
+plt.ylabel("Frequency")
+plt.tick_params(axis='both', which='major', labelsize=11)
+plt.show()</code></pre>
+          </div>
+
           <div class="plot-container">
-            <div class="placeholder-image">[Insert Distribution Plot Here]</div>
+              <img src="assests/images/EDA_price_histogram.png" alt="A histogram of prices">
             <p class="caption">
-              Figure 1: Distribution of the primary variable showing outliers.
+              Figure 1: Distribution of the prices showing outliers.
             </p>
           </div>
-          <h3>Hypothesis Testing</h3>
+
+          <p>Looking at this histogram, it is clear that the price is strongly right skewed. The maximum price (~$1.9 million) is way beyond its right boundary.</p>
+          <br>
+          <p>Now, we will determine the outliers in prices. We do this by calculating the IQR of prices.</p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code class="python">Q1, Q3 = prices.quantile([0.25, 0.75])
+IQR = Q3 - Q1
+upper = Q3 + 1.5 * IQR
+outliers = df[df['price'] > upper]['price']
+
+print(f"Number of outliers (price > ${upper:,.0f}): {len(outliers)} ({(len(outliers) / len(prices) * 100):.2f}% of prices)")
+print(f"Max price: ${prices.max():,.0f}")</code></pre>
+          </div>
+
+          <p>These results allow us to conclude that prices in our dataset show a strong right skew, with a mean price well above the median. Most prices lie below 250k, but a few extreme outliers reach up to $1.9 million. There are a total of 1273 (9.94%) outliers.</p>
+
+          <!-- CONCLUSION 2 -->
+          <h3>2. Is there a linear correlation between price and rating?</h3>
+          <p>To execute a hypothesis test, we must first define the null and alternative hypotheses:</p>
+          <ul>
+            <li>H<sub>0</sub>: There is no linear correlation between price and rating.</li>
+            <li>H<sub>A</sub>: There is a linear correlation between price and rating.</li>
+          </ul>
+          <br>
+          <p>We also define our significance level to be &alpha; = 0.05. If we determine that p < &alpha;, then we reject the null hypothesis.</p>
+          <br>
+          <p>Since we are trying to determine if price and rating are linearly correlated, the best test to use is the pearson correlation coefficient.</p>
+          
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code class="python">import pandas as pd
+from scipy.stats import pearsonr
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Convert columns to numeric
+df['price'] = pd.to_numeric(df['price'], errors='coerce')
+df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
+
+# --- Visualization: Scatter + Boxplot + Log Scale ---
+plt.figure(figsize=(10,6))
+
+# Add a boxplot overlay for distribution by rating bins
+rating_bins = pd.cut(df['rating'], bins=[0,2,3,4,4.5,5], labels=['0–2','2–3','3–4','4–4.5','4.5–5'])
+sns.boxplot(x=rating_bins, y='price', data=df, color='lightgray', fliersize=0, width=0.6)
+
+# Scatter points (with transparency)
+sns.scatterplot(x='rating', y='price', data=df, alpha=0.05)
+
+# Log scale makes all ranges visible
+plt.yscale('log')
+plt.title("Airbnb Price vs Rating")
+plt.xlabel("Rating Range")
+plt.ylabel("Price")
+plt.tight_layout()
+plt.show()
+
+# Pearson correlation coefficient
+pearson_corr, pearson_p = pearsonr(df['price'], df['rating'])
+print("pearson correlation:" + str(pearson_corr) + "p-value:" + str(pearson_p))</code></pre>
+          </div>
+          
+          <div class="plot-container">
+              <img src="assests/images/EDA_price_vs_rating.png" alt="A boxplot of price vs rating.">
+            <p class="caption">
+              Figure 2: Price vs rating.
+            </p>
+          </div>
+
+          <p>The p-value is approximately 0.001, which means there is a 1/1000 chance of us this pearson correlation between price and rating if we fail to reject the null hypothesis. 
+            Because the p-value (0.001) is smaller than &alpha; (0.05), we reject the null hypothesis. Therefore, there exists a linear correlation between price and rating.</p>
+          <br>
+          <p> The calculated pearson correlation is roughly 0.034, which signals a weak, positive relationship between price and rating.</p>
+          
+          
+          <!-- CONCLUSION 3 -->
+          <h3>3. </h3>
           <p>
-            We performed a T-test to determine if the difference in means was
-            significant...
+            foo
           </p>
         </div>
       </section>
