@@ -710,38 +710,98 @@ df.head()
       <section id="ml" class="fade-in">
         <h2>Primary Analysis (Machine Learning)</h2>
         <div class="card">
-          <h3>Technique Selection</h3>
+          <h3>Model 1: Can Rating Be Used to Predict Price?</h3>
           <p>
-            We chose Random Forest Regression because our data is non-linear and
-            high-dimensional...
+            <em>NOTE: Partially inspired by ChatGPT when brainstorming the idea for this question</em><br><br>
+            According to the data exploration, there exists a linear correlation between the numerical 
+            variables "Price" and "Rating." As a result, it may be possible to use a LinearRegression 
+            model to predict one feature based on the other. However, since a machine learning model was 
+            already used to predict many of the ratings used for this analysis, it would be inadvisable to 
+            once again predict ratings. Therefore, this analysis will use "Rating" to predict "Price."<br><br>
+            It is important to note that "Price" is right-skewed (discovered during data exploration). 
+            Due to this, a log transformation was applied to the "Price" values in order to reduce the 
+            skew value and make them easier to use for modeling.
           </p>
-          <h3>Training & Testing</h3>
+          <h3>Training & Testing the Model</h3>
           <div class="code-container">
             <div class="code-header">
               <span class="dot red"></span>
               <span class="dot yellow"></span>
               <span class="dot green"></span>
-              <span>model_training.py</span>
-            </div>
-            <pre><code>
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = RandomForestRegressor(n_estimators=100)
-model.fit(X_train, y_train)
-                    </code></pre>
+              <span>model_one_training.py</span>
           </div>
+          <pre><code>
+  # Addressing price outliers with log transformations
+  df['price'] = np.log(df['price'])
+
+  # Confirming that the adjusted price still possesses a linear correlation with rating by 
+  # comparing the pearsonr p-value between the updated columns with the level of significance
+  pearson_corr, pearson_p = pearsonr(df['price'], df['rating'])
+  print(f"Price and rating are still linearly correlated: {pearson_p < 0.05}")
+
+  # Initializing key variables
+  seed = 42
+  X = df[['rating']]
+  y = df[['price']]
+  regressor = LinearRegression()
+
+  # Splitting the data
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=seed)
+
+  # Fitting the model and making predictions
+  regressor.fit(X_train, y_train)
+  y_train_pred = regressor.predict(X_train)
+  y_test_pred = regressor.predict(X_test)
+
+  # Evaluating the model
+  mse_train = mean_sqaured_error(y_true=y_train, y_pred=y_train_pred)
+  mse_test = mean_sqaured_error(y_true=y_test, y_pred=y_test_pred)
+  r2_train = r2_score(y_true=y_train, y_pred=y_train_pred)
+  r2_test = r2_score(y_true=y_test, y_pred=y_test_pred)
+
+  print(f"MSE for Training Data: {mse_train}")
+  print(f"MSE for Testing Data: {mse_test}")
+  print(f"R2 Score for Training Data: {r2_train}")
+  print(f"R2 Score for Testing Data: {r2_test}")
+          </code></pre>
         </div>
+          <p>
+            While the mean-squared error (MSE) is low, indicating the predicted and true price values 
+            are close, the R-squared values are also low (~0.02 when higher values closer to 1 are best), 
+            which means the rating variable is not being heavily factored into the price predictions being 
+            made by the model.
+          </p>
+      </div>
       </section>
 
       <section id="viz" class="fade-in">
         <h2>Visualization of Results</h2>
         <div class="card">
+          <h3>Model 1 Visualization</h3>
           <p>
-            The model achieved an accuracy of 85%. The plot below visualizes the
-            predicted vs actual values.
+            Let's use a scatter plot and regression line to obtain a visualization of the model's predicitons 
+            in relation to the train and test data.
           </p>
+            <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>model_one_visualization.py</span>
+          </div>
+          <pre><code>
+# Drawing the scatter plot and regression line
+plt.scatter(X_train, y_train, color='blue', label='Train')
+plt.scatter(X_test, y_test, color='orange', label='Test')
+plt.plot(X_train, y_train_pred, color='green', label='Regression Line')
+
+# Adding a title, a legend, and axis labels
+plt.title('Regression Model')
+plt.legend(loc='upper left')
+plt.xlabel('Rating')
+plt.ylabel('Price (Natural Log)')
+          </code></pre>
+        </div>
           <div class="plot-container">
             <div class="placeholder-image">
               [Insert Confusion Matrix or Regression Plot Here]
@@ -756,11 +816,28 @@ model.fit(X_train, y_train)
         <div class="card highlight-card">
           <h3>Key Takeaways</h3>
           <ul>
-            <li>Insight 1: The data suggests that...</li>
+            <li>Insight 1: Based on the MSE results, it appears that it is possible to 
+              use an Airbnb's rating to get a rough estimate of the location's price.
+              However, by analyzing the graph and R-squared values, it is evident that 
+              most of the data being used for this analysis have very similar ratings (~4.8).
+              As a result, despite the existence of a linear correlation between price and 
+              rating, the similarity between the data points used for this analysis is 
+              likely causing the model to depend less on the "Rating" variable to make a price 
+              prediction, and more so on memorizing the training data (which highly resembles 
+              the testing data numerically).</li>
             <li>Insight 2: Our model proves that...</li>
             <li>Insight 3: Future work could include...</li>
           </ul>
-          <p>Does the reader feel informed?</p>
+          <p><br><br>An uninformed reader should feel more informed regarding this topic after proceeding 
+            through this tutorial, since they now have a better understanding of how different 
+            Airbnbs features impact one another. So when they see that an Airbnb has a high rating, 
+            for example, they have a better sense of its likely price and the number of guests it 
+            can accomodate (even if this information is not available).<br><br>
+            Readers who knew about this topic should still have learned something new, as they 
+            now understand how machine learning models can be used to successfully make predictions 
+            regarding Airbnb features. This tutorial can inspire these readers to create their own 
+            machine learning models to gain a further understanding of how Airbnb features correlate 
+            with one another.</p>
         </div>
       </section>
     </main>
