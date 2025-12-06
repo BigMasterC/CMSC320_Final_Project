@@ -116,6 +116,28 @@
       <section id="curation" class="fade-in">
         <h2>Data Curation</h2>
         <div class="card">
+          <h3>Imported Python Libraries</h3>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>import_libraries.py</span>
+            </div>
+            <pre><code class="python">
+# Importing the necessary Python Libraries
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_sqaured_error, r2_score
+from scipy.stats import pearsonr
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import datetime as dt
+import numpy as np
+import re
+            </code></pre>
+          </div>
           <h3>Dataset Overview</h3>
           <p>
             <b>Dataset Citation:</b> Jangra, A. (2024, May 28).
@@ -163,9 +185,11 @@
               <span class="dot green"></span>
               <span>data_processing.py</span>
             </div>
-            <pre><code class="python"># Loading the dataset and printing its first 5 rows prior to pre-processing
+            <pre><code class="python">
+# Loading the dataset and printing its first 5 rows prior to pre-processing
 df = pd.read_csv("airbnb.csv")
-df.head()</code></pre>
+df.head()
+            </code></pre>
           </div>
           
           <p>Scroll horizontally and vertically to view all columns and rows</p>
@@ -766,6 +790,13 @@ df.head()
           </code></pre>
         </div>
           <p>
+            <em>Output:</em><br>
+            Price and rating are still linearly correlated: True<br>
+            MSE for Training Data: 1.198452182252336<br>
+            MSE for Testing Data: 1.1769543401018487<br>
+            R2 Score for Training Data: 0.025859874573103014<br>
+            R2 Score for Testing Data: 0.024019899803277345<br><br>
+            <em>Analysis:</em><br>
             While the mean-squared error (MSE) is low, indicating the predicted and true price values 
             are close, the R-squared values are also low (~0.02 when higher values closer to 1 are best), 
             which means the rating variable is not being heavily factored into the price predictions being 
@@ -824,11 +855,11 @@ plt.ylabel('Price (Natural Log)')
               rating, the similarity between the data points used for this analysis is 
               likely causing the model to depend less on the "Rating" variable to make a price 
               prediction, and more so on memorizing the training data (which highly resembles 
-              the testing data numerically).</li>
-            <li>Insight 2: Our model proves that...</li>
+              the testing data numerically).</li><br>
+            <li>Insight 2: Our model proves that...</li><br>
             <li>Insight 3: Future work could include...</li>
           </ul>
-          <p><br><br>An uninformed reader should feel more informed regarding this topic after proceeding 
+          <p><br>An uninformed reader should feel more informed regarding this topic after proceeding 
             through this tutorial, since they now have a better understanding of how different 
             Airbnbs features impact one another. So when they see that an Airbnb has a high rating, 
             for example, they have a better sense of its likely price and the number of guests it 
