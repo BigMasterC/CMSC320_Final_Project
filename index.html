@@ -107,8 +107,18 @@
         <h2>Introduction</h2>
         <div class="card">
           <p>
-            [Placeholder for a proper introduction to the project topic and its
-            significance.]
+            This tutorial focuses on Airbnbs, and determining correlation among features.
+            As Airbnbs become more popular, it becomes more important to know what certain 
+            data about an Airbnb can mean in regard to other features, especially when those 
+            other features (e.g. price) are not available at that moment and could sway one's 
+            decision to stay at an Airbnb. One question this tutorial seeks to answer is if 
+            an Airbnb's rating can be used to predict its price. If this is possible, it will 
+            help Airbnb customers ensure they are paying fair prices by checking the Airbnb's 
+            rating. Another question this tutorial seeks to answer is if an Airbnb's check-in 
+            time can predict its check-out time. If this is possible, it will help customers 
+            determine how long they will be allowed to stay at a certain Airbnb (even if that 
+            information is not made available), so they can ensure they are paying fair prices 
+            for the amount of time they are allowed to stay.
           </p>
         </div>
       </section>
@@ -1096,7 +1106,7 @@ plt.ylabel('Price (Natural Log)')
               likely causing the model to depend less on the "Rating" variable to make a price 
               prediction, and more so on memorizing the training data (which highly resembles 
               the testing data numerically).</li><br>
-            <li>Model 2 Conclusion: Based on this analysis, an Airbnb's rating can be 
+            <li>Model 1 Conclusion: Based on this analysis, an Airbnb's rating can be 
               used to predict the Airbnb's price. However, these findings should be confirmed by 
               repeating the analysis with a more diverse set of locations (especially in terms 
               of ratings).
@@ -1121,8 +1131,8 @@ plt.ylabel('Price (Natural Log)')
           <p><br>An uninformed reader should feel more informed regarding this topic after proceeding 
             through this tutorial, since they now have a better understanding of how different 
             Airbnbs features impact one another. So when they see that an Airbnb has a high rating, 
-            for example, they have a better sense of its likely price and the number of guests it 
-            can accomodate (even if this information is not available).<br><br>
+            for example, they have a better sense of its likely price (even when the price is 
+            not available at that moment).<br><br>
             Readers who knew about this topic should still have learned something new, as they 
             now understand how machine learning models can be used to successfully make predictions 
             regarding Airbnb features. This tutorial can inspire these readers to create their own 
