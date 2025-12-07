@@ -70,32 +70,34 @@
             <div class="member">
               <strong>Chibundu Onwuegbule</strong>
               <p>Sections: A, G</p>
-              <small>[Placeholder for tasks completed for this project]</small>
+              <small>Created the project website structure and wrote clean section headers and transitions.</small>
             </div>
             <div class="member">
               <strong>Aditya Chattopadhyay</strong>
               <p>Section: B</p>
-              <small>[Placeholder for tasks completed for this project]</small>
+              <small>Fixed the check-in/check-out data inconsistencies, organized the data preprocessing section.</small>
             </div>
             <div class="member">
               <strong>Thomas Huitema</strong>
               <p>Section: C</p>
-              <small>[Placeholder for tasks completed for this project]</small>
+              <small>Determined if the price feature contained outliers, organized EDA conclusions 1 and 2.</small>
             </div>
             <div class="member">
               <strong>Arnav Doshi</strong>
               <p>Sections: C</p>
-              <small>[Placeholder for tasks completed for this project]</small>
+              <small>Determined if the rating feature impacted the number of guests feature, organized EDA conclusion 3.</small>
             </div>
             <div class="member">
               <strong>Zhiteng Ke</strong>
               <p>Sections: D, E, F</p>
-              <small>[Placeholder for tasks completed for this project]</small>
+              <small>Determined if the rating feature possessed a linear correlation with the price feature. Also created ML model 2 
+                and its visualization, while also determining insights/conclusions that could be drawn from the model.</small>
             </div>
             <div class="member">
               <strong>Alex Mohamed</strong>
               <p>Sections: D, E, F</p>
-              <small>[Placeholder for tasks completed for this project]</small>
+              <small>Fixed the rating data inconsistencies. Also created ML model 1 and its visualization, while also determining 
+                insights/conclusions that could be drawn from the model.</small>
             </div>
           </div>
         </div>
@@ -855,9 +857,193 @@ print("pearson correlation:" + str(pearson_corr) + "p-value:" + str(pearson_p))<
           
           
           <!-- CONCLUSION 3 -->
-          <h3>3. </h3>
+          <h3>3. Does the Rating of an Airbnb Have an Effect on the Number of Guests the Airbnb Can Accommodate?</h3>
           <p>
-            foo
+            Let's start by defining the null and alternate hypotheses:
+            <ul>
+              <li>H<sub>0</sub>: The rating does not have an effect on the number of guests.</li>
+              <li>H<sub>a</sub>: The rating does have an effect on the number of guests.</li>
+            </ul>
+            <br>
+            First, we need to determine the general characteristics of the values in the rating column. 
+            How spread out are they? Are the ratings skewed? Let's do some EDA on the ratings.
+          </p>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code>
+df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
+
+# ---------------------------------------------------------
+# 2. Summary statistics (tells you spread, center, variance)
+# ---------------------------------------------------------
+print("Summary Statistics for Rating Column:")
+print(df['rating'].describe())
+print("\n")
+
+# ---------------------------------------------------------
+# 3. Basic spread measures
+# ---------------------------------------------------------
+rating_min = df['rating'].min()
+rating_max = df['rating'].max()
+rating_range = rating_max - rating_min
+rating_std = df['rating'].std()
+
+print(f"Min rating: {rating_min}")
+print(f"Max rating: {rating_max}")
+print(f"Range (max - min): {rating_range}")
+print(f"Standard deviation: {rating_std}")
+print("\n")
+
+# ---------------------------------------------------------
+# 4. Visualizations
+# ---------------------------------------------------------
+
+# Histogram
+plt.figure(figsize=(8,4))
+plt.hist(df['rating'], bins=20)
+plt.xlabel("Rating")
+plt.ylabel("Count")
+plt.title("Histogram of Rating Distribution")
+plt.show()
+
+# Boxplot
+plt.figure(figsize=(6,4))
+plt.boxplot(df['rating'])
+plt.title("Boxplot of Ratings")
+plt.ylabel("Rating")
+plt.show()
+            </code></pre>
+          </div>
+          <p>
+            <em>Output:</em><br>
+            Summary Statistics for Rating Column:<br>
+            count&emsp;12805.000000<br>
+            mean&emsp;4.861784<br>
+            std&emsp;0.116434<br>
+            25%&emsp;4.830000<br>
+            50%&emsp;4.880000<br>
+            75%&emsp;4.930000<br>
+            max&emsp;5.000000<br>
+            Name: rating, dtype: float64<br>
+            <br>
+            Min rating: 3.0<br>
+            Max rating: 5.0<br>
+            Range (max - min): 2.0<br>
+            Standard deviation: 0.11643420657275629
+            <br>
+          </p>
+          <div class="plot-container">
+            <img src="assests/images/histogram_and_boxplot.png" alt="histogram_and_boxplot">
+            <p class="caption">
+              Figure 3: Ratings Distribution Histogram and Boxplot.
+            </p>
+          </div>
+
+          <p>
+            From the exploratory data analysis above, we can see that the distribution of 
+            ratings is heavily left skewed, with the majority of ratings being from 4.5 to 5. 
+            Furthermore, the minimum rating value is 3, while the max is 5, and the ratings are 
+            given as decimal values. We can also see that the standard deviation is low at 
+            approximately 0.2, which means that majority of the data is clustered. Additionally, 
+            the mean is 4.8, further solidifying the fact that the data is left skewed and is 
+            not of uniform distribution.<br><br>
+            These findings have led us to the conclusion that using the Kruskal-Wallis test is 
+            the best evaluation method for this hypothesis. This decision is supported by 
+            the following reasons:
+            <br>
+            <ul>
+              <li>Since we want to observe the effect of the ratings on the number of guests
+                and the ratings are floating point values, we can bin the ratings into three 
+                groups, also known as categories.</li>
+              <li>Each group will be a range of values. This helps us to satisfy a primary 
+                requirement of the Kruskal Wallis test which is that there must be a single 
+                categorical independent variable, and a single continuous dependent variable. 
+                In this case, the rating is the independent variable and the number of guests 
+                is the dependent variable.</li>
+              <li>There are more than 2 rating groups, making this ideal from Kruskal Wallis.</li>
+              <li>The distribution is not normal.</li>
+              <li>The data is skewed.</li>
+              <li>There is low variance among the distribution of ratings.</li>
+              <li>The rating groups will be unequal in size, since most of the ratings fall between 
+                the 4.5 to 5 range.</li>
+              <li>Kruskal Wallis uses the median to compare groups, as opposed to means that are 
+                used by tests like the ANOVA. The mean of ratings in this distribution is impacted 
+                by the skew, making ANOVA an invalid option to use. Conversely, Kruskal Wallis is 
+                robust to skewed, non-uniform, low-variance, unevenly sampled, and overall 
+                unbalanced data. It is a non parametric test.</li>
+            </ul><br>
+            For these reasons, Kruskal Wallis is the best test to use for this hypothesis.
+            Now, we can begin writing the code for this test.
+          </p>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span>data_processing.py</span>
+            </div>
+            <pre><code>
+res = []
+
+# Break the ratings into 3 groups
+for index, row in df.iterrows():
+  if row['rating'] >= 3 and row['rating'] < 4.25:
+    res.append('3-4.25')
+  elif row['rating'] >=4.25 and row['rating'] < 4.75:
+    res.append('4.25-4.75')
+  else:
+    res.append('4.75-5')
+
+# Append a column called RatingGroups into the dataframe to match each rating value in each row with the group it belongs to and group the data by these groups
+df['RatingGroups'] = res
+groups = df.groupby('RatingGroups')
+
+# Separate the dataframe into three smaller dataframes by group, each with its respective group-based data
+one = groups.get_group(3-4.25) 
+two = groups.get_group('4.25-4.75')
+three = groups.get_group('4.75-5')
+
+# Perform the Kruskal-Wallis test on the number of guests of all three groups. This will give us our rating vs number of guests finding.
+from scipy.stats import kruskal
+h, p = kruskal(one['guests'], two['guests'], three['guests'])
+print("Kruskal Wallis p-value:", p)
+
+# Plot findings
+# The rating vs the mean of guests accommodatable for that rating group
+x = ['3-4.24', '4.25-4.74', '4.75-5']
+y = [one['guests'].mean(), two['guests'].mean(),three['guests'].mean()]
+plt.xlabel('Rating')
+plt.ylabel('Mean of Guests Acommodatable')
+plt.title('Association between rating and mean of guests acommodatable')
+plt.bar(x, y)
+plt.show()
+            </code></pre>
+          </div>
+
+          <p>
+            <em>NOTE: The arguments in line 17 (starting with "one = ...") should have single quotation marks around them, 
+              but this caused an issue with the HTML!</em><br><br>
+            <em>Output:</em><br>
+            <div class="plot-container">
+              <img src="assests/images/kruskal_wallis_value_and_graph.png" alt="kruskal_wallis_p_value_and_graph">
+              <p class="caption">Figure 4: Kruskal-Wallis P-Value With Relevant Bar Plot</p>
+            </div>
+          </p>
+          <p>
+            The p-value of this test is approximately 0.79, which is far greater than 0.05. This means that the 
+            probability the data for this test follows the distribution expected by the null 
+            hypothesis is high, so we fail to reject the null hypothesis. More plainly, we accept 
+            the hypothesis that the rating does not have an effect on the number of guests that 
+            an Airbnb can accommodate. This hypothesis is supported by the bar plot above, 
+            which shows that the average of the number of guests accommodatable across all 
+            rating groups is similar, ranging consistently between 5 and 6. This tells us that 
+            the number of guests that can fit in an Airbnb does not depend on the rating of that 
+            Airbnb.
           </p>
         </div>
       </section>
@@ -1042,7 +1228,7 @@ plt.scatter(X_test, y_test, color='orange', label='Test')
 plt.plot(X_train, y_train_pred, color='green', label='Regression Line')
 
 # Adding a title, a legend, and axis labels
-plt.title('Regression Model')
+plt.title('"Rating vs. Price" Regression Model')
 plt.legend(loc='upper left')
 plt.xlabel('Rating')
 plt.ylabel('Price (Natural Log)')
@@ -1053,9 +1239,11 @@ plt.ylabel('Price (Natural Log)')
             <div class="regression-graph">
               <img src="/CMSC320_Final_Project/assests/images/updated_price_vs_rating_regression_graph.png" alt="rating_price_regression_graph">
             </div>
-            <p class="caption">Figure 3: Rating vs. Price Regression Graph</p>
+            <p class="caption">Figure 5: Rating vs. Price Regression Graph</p>
           </div>
           <p><em>NOTE: The y-axis represents the natural log of the actual prices to make the model more clear!</em></p>
+
+          <br><hr>
 
           <h3>Model 2 Visualization</h3>
           <div class="code-container">
@@ -1087,7 +1275,7 @@ plt.ylabel('Price (Natural Log)')
             <div class="regression-graph">
               <img src="/CMSC320_Final_Project/assests/images/checkin_vs_checkout_regression_graph.png" alt="checking_vs_checkout_regression_graph">
             </div>
-            <p class="caption">Figure 4: Check-In vs. Check-Out Regression Graph</p>
+            <p class="caption">Figure 6: Check-In vs. Check-Out Regression Graph</p>
           </div>
         </div>
       </section>
