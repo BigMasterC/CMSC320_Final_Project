@@ -913,7 +913,7 @@ plt.show()
           </div>
           <p>
             <em>Output:</em><br>
-            Summary Statistics for Rating Column:<br>
+            Summary Statistics for Rating:<br>
             count&emsp;12805.000000<br>
             mean&emsp;4.861784<br>
             std&emsp;0.116434<br>
@@ -997,7 +997,7 @@ one = groups.get_group(3-4.25)
 two = groups.get_group('4.25-4.75')
 three = groups.get_group('4.75-5')
 
-# Perform the Kruskal-Wallis test on the number of guests of all three groups. This will give us our rating vs number of guests finding.
+# Perform the Kruskal-Wallis test on the number of guests of all three groups. This will give us our rating vs number of guests finding
 from scipy.stats import kruskal
 h, p = kruskal(one['guests'], two['guests'], three['guests'])
 print("Kruskal Wallis p-value:", p)
