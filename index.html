@@ -539,14 +539,16 @@ df.head()
 
           <h3>Data Preprocessing</h3>
           <p>
-            Many of the rows contain a non-numerical rating of "New." Possible
-            options for fixing this issue include dropping the rows with a
-            rating of "New" or using the mean/median for rows missing a rating.
-            However, since ~33% of the data has a "New" rating, those options
-            were less desirable. Therefore, the best option was to use a
-            regression model with existing data to predict the ratings for rows
-            missing rating values, and use those predictions to fill in the
-            missing data.
+            Many of the rows contain a non-numerical rating of "New" (which means 
+            the Airbnb described in that row does not have any ratings). This needs to 
+            be fixed, because this tutorial's analyses require numerical ratings for all rows.
+            Possible options for fixing this issue include dropping the rows with a rating of "New" 
+            or using the mean/median of the existing numerical ratings to obtain a rating for these 
+            rows with a "New" rating. However, since ~33% of the data has a "New" rating (which is a 
+            high amount), those options are less desirable. Therefore, the best option is to create a 
+            machine learning regression model that uses existing numerical ratings (and features that 
+            could indicate how an Airbnb acquired that rating) to predict the ratings for rows 
+            containing a "New" rating, and then use those predictions to replace the "New" ratings.
           </p>
           <div class="code-container">
             <div class="code-header">
@@ -1308,16 +1310,23 @@ plt.ylabel('Price (Natural Log)')
               in check-out time.
             </li>
           </ul>
-          <p><br>An uninformed reader should feel more informed regarding this topic after proceeding 
-            through this tutorial, since they now have a better understanding of how different 
-            Airbnbs features impact one another. So when they see that an Airbnb has a high rating, 
-            for example, they have a better sense of its likely price (even when the price is 
-            not available at that moment).<br><br>
-            Readers who knew about this topic should still have learned something new, as they 
-            now understand how machine learning models can be used to successfully make predictions 
-            regarding Airbnb features. This tutorial can inspire these readers to create their own 
-            machine learning models to gain a further understanding of how Airbnb features correlate 
-            with one another.</p>
+          <p><br>
+            For model 1, an uninformed reader should now understand that despite the data's limitations 
+            in this analysis, higher ratings appear to correlate with an Airbnb having a higher price.
+            Meanwhile, readers who already had a solid understanding of this topic should now understand 
+            that a similar analysis using a dataset with a more uniform distribution of ratings is necessary 
+            to fully confirm these findings. The outliers present in the graphs (e.g. high price but low rating) 
+            also inform knowledgable readers that factors other than rating likely affect (or correlate with) 
+            an Airbnb's price.
+            <br><br>
+            For model 2, an uninformed reader should now understand that more factors than just check-in time 
+            influence an Airbnb's check-out time. Meanwhile, readers who already had a solid understanding 
+            of this topic should now understand that check-in time may not correlate at all with check-out time, 
+            given the random nature of the scatterplot points. Therefore, these knowledgable readers should 
+            understand that check-out time likely correlates with different factors, such as the Airbnb location 
+            or city, necessitating a similar analysis to the one completed in this tutorial, which uses a model 
+            that utilizes different features as predictors.
+          </p>
         </div>
       </section>
     </main>
