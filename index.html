@@ -75,29 +75,30 @@
             <div class="member">
               <strong>Aditya Chattopadhyay</strong>
               <p>Section: B</p>
-              <small>Fixed the check-in/check-out data inconsistencies, organized the data preprocessing section.</small>
+              <small>Fixed the check-in/check-out data inconsistencies and organized the data preprocessing section.</small>
             </div>
             <div class="member">
               <strong>Thomas Huitema</strong>
               <p>Section: C</p>
-              <small>Determined if the price feature contained outliers, organized EDA conclusions 1 and 2.</small>
+              <small>Determined if the price feature contained outliers and organized EDA conclusions 1 and 2.</small>
             </div>
             <div class="member">
               <strong>Arnav Doshi</strong>
               <p>Sections: C</p>
-              <small>Determined if the rating feature impacted the number of guests feature, organized EDA conclusion 3.</small>
+              <small>Determined if the rating feature impacted the number of guests feature and organized EDA conclusion 3.</small>
             </div>
             <div class="member">
               <strong>Zhiteng Ke</strong>
               <p>Sections: D, E, F</p>
-              <small>Determined if the rating feature possessed a linear correlation with the price feature. Also created ML model 2 
-                and its visualization, while also determining insights/conclusions that could be drawn from the model.</small>
+              <small>Determined if the rating feature possessed a linear correlation with the price feature. Created ML model 2 
+                and its visualization, before determining insights and conclusions that could be drawn from the model.</small>
             </div>
             <div class="member">
               <strong>Alex Mohamed</strong>
               <p>Sections: D, E, F</p>
-              <small>Fixed the rating data inconsistencies. Also created ML model 1 and its visualization, while also determining 
-                insights/conclusions that could be drawn from the model.</small>
+              <small>Fixed the rating data inconsistencies. Created ML model 1 and its visualization, before determining 
+                insights and conclusions that could be drawn from the model. Also wrote the webpage introduction and 
+                group member contribution statements.</small>
             </div>
           </div>
         </div>
@@ -537,7 +538,9 @@ df.head()
             samples by which we can do further analysis.
           </p>
 
+          <br><hr>
           <h3>Data Preprocessing</h3>
+          <h3>Cleaning Up Ratings</h3>
           <p>
             Many of the rows contain a non-numerical rating of "New" (which means 
             the Airbnb described in that row does not have any ratings). This needs to 
@@ -548,7 +551,12 @@ df.head()
             high amount), those options are less desirable. Therefore, the best option is to create a 
             machine learning regression model that uses existing numerical ratings (and features that 
             could indicate how an Airbnb acquired that rating) to predict the ratings for rows 
-            containing a "New" rating, and then use those predictions to replace the "New" ratings.
+            containing a "New" rating, and then use those predictions to replace the "New" ratings.<br><br> 
+            The model used for this tutorial is a Support Vector Regression (SVR) model, because 
+            some of the features in this dataset may have nonlinear relationships with one another. 
+            SVR models are able to address these relationships through the use of certain kernels, 
+            like the Radial Basis Function (RBF) kernel which was used for this task, that transform 
+            the data into a form that can be processed by the model.
           </p>
           <div class="code-container">
             <div class="code-header">
