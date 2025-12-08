@@ -858,6 +858,7 @@ print("pearson correlation:" + str(pearson_corr) + "p-value:" + str(pearson_p))<
           
           <!-- CONCLUSION 3 -->
           <h3>3. Does the Rating of an Airbnb Have an Effect on the Number of Guests the Airbnb Can Accommodate?</h3>
+          <p>We just discovered that there is a relationship between the price per night of an airbnb and its rating. Now, let's explore the question of whether or not the rating of an airbnb affects the number of guests accommodatable by that airbnb. Do airbnbs with higher ratings typically have room for more guests than airbnbs with lower ratings, or is it the other way around? If so, does this mean the price per night indirectly affects the rating? Or, does rating even matter when considering the number of guests that can live in an airbnb? Let's find out!</p>
           <p>
             Let's start by defining the null and alternate hypotheses:
             <ul>
@@ -878,43 +879,34 @@ print("pearson correlation:" + str(pearson_corr) + "p-value:" + str(pearson_p))<
             <pre><code>
 df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
 
-# ---------------------------------------------------------
-# 2. Summary statistics (tells you spread, center, variance)
-# ---------------------------------------------------------
-print("Summary Statistics for Rating Column:")
+# Summary Statistics
+print("Summary Statistics for Rating:")
 print(df['rating'].describe())
 print("\n")
 
-# ---------------------------------------------------------
-# 3. Basic spread measures
-# ---------------------------------------------------------
-rating_min = df['rating'].min()
-rating_max = df['rating'].max()
-rating_range = rating_max - rating_min
-rating_std = df['rating'].std()
+# Measures of Spread
+min = df['rating'].min()
+max = df['rating'].max()
+range = max - min
 
-print(f"Min rating: {rating_min}")
-print(f"Max rating: {rating_max}")
-print(f"Range (max - min): {rating_range}")
-print(f"Standard deviation: {rating_std}")
+print(f"Range of ratings: {range}")
+
 print("\n")
 
-# ---------------------------------------------------------
-# 4. Visualizations
-# ---------------------------------------------------------
+# Graphs
 
 # Histogram
 plt.figure(figsize=(8,4))
 plt.hist(df['rating'], bins=20)
 plt.xlabel("Rating")
-plt.ylabel("Count")
-plt.title("Histogram of Rating Distribution")
+plt.ylabel("Number of Airbnbs With Given Rating")
+plt.title("Rating Distribution Across All Airbnbs")
 plt.show()
 
 # Boxplot
 plt.figure(figsize=(6,4))
 plt.boxplot(df['rating'])
-plt.title("Boxplot of Ratings")
+plt.title("Rating Density")
 plt.ylabel("Rating")
 plt.show()
             </code></pre>
@@ -931,10 +923,7 @@ plt.show()
             max&emsp;5.000000<br>
             Name: rating, dtype: float64<br>
             <br>
-            Min rating: 3.0<br>
-            Max rating: 5.0<br>
-            Range (max - min): 2.0<br>
-            Standard deviation: 0.11643420657275629
+            Range of ratings: 2.0<br>
             <br>
           </p>
           <div class="plot-container">
