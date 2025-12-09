@@ -144,7 +144,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_sqaured_error, r2_score, mean_absolute_error
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, kruskal
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -767,8 +767,7 @@ print(f"Prices mean vs median: ${prices_mean:,.0f} and ${prices_median:,.0f}")</
               <span class="dot green"></span>
               <span>data_processing.py</span>
             </div>
-            <pre><code class="python">import matplotlib.pyplot as plt
-
+            <pre><code class="python">
 plt.hist(prices, bins=60, range=(0, 0.25e6))
 plt.title("Price distribution (Clipped to $250k)")
 plt.xlabel("Price ($)")
@@ -1010,7 +1009,6 @@ two = groups.get_group('4.25-4.75')
 three = groups.get_group('4.75-5')
 
 # Perform the Kruskal-Wallis test on the number of guests of all three groups. This will give us our rating vs number of guests finding
-from scipy.stats import kruskal
 h, p = kruskal(one['guests'], two['guests'], three['guests'])
 print("Kruskal Wallis p-value:", p)
 
